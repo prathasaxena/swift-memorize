@@ -12,30 +12,31 @@ struct MemorizeView: View {
     
     var body: some View {
         VStack {
-            Text("Memorize").font(.system(size: 40)).fontWeight(.bold).multilineTextAlignment(.leading)
+            Text("Memorize").font(.system(size: 30)).fontWeight(.bold).multilineTextAlignment(.leading)
             ForEach(vm.cards){item in
                 CardView(item: item).aspectRatio(2/3, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
             }
             Spacer()
-            ThemeButtons()
+            ThemeButtons(vm: vm)
             
         }.padding(4)
     }
 }
 
 struct ThemeButtons : View {
+    var vm : MemorizeVM
     var body : some View {
         HStack{
             Button("Vehicle"){
-                print("pressed vehicle")
+                vm.selectTheme(selected: .Vehicle)
             }
             Spacer()
             Button("Smiley"){
-                print("pressed smiley")
+                vm.selectTheme(selected: .Smiley)
             }
             Spacer()
             Button("Animal"){
-                print("pressed animal")
+                vm.selectTheme(selected: .Animals)
             }
         }
     }

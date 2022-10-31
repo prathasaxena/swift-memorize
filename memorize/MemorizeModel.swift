@@ -21,7 +21,7 @@ struct MemorizeModel<CardContent> where CardContent: Equatable {
         for i in 0..<count {
             let content = setContent(theme, i)
             cards.append(CardType(id: i * 2 + 1, content: content))
-            cards.append(CardType(id: i * 2 + 2, content: content))
+//            cards.append(CardType(id: i * 2 + 2, content: content))
         }
     }
     

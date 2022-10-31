@@ -31,15 +31,15 @@ class MemorizeVM : ObservableObject {
         }
     }
     
-    @Published var model = initializeMemorize(setTheme : .Smiley, count: smileys.count)
+    @Published var model = initializeMemorize(setTheme : .Smiley, count: 1)
     
     var cards : [Cards] {
         return model.cards
     }
     
     //use intent
-    func selectTheme(selected theme : String) {
-        
+    func selectTheme(selected theme : Theme) {
+        model = MemorizeVM.initializeMemorize(setTheme: theme, count: 1)
     }
     
 }
