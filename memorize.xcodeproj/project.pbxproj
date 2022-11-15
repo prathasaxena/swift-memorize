@@ -61,10 +61,10 @@
 				0407D8C128EFFB2F0097157E /* memorizeApp.swift */,
 				0407D8C328EFFB2F0097157E /* MemorizeView.swift */,
 				049102E028FDC64B004C6909 /* MemorizeVM.swift */,
+				049102E228FDC936004C6909 /* MemorizeModel.swift */,
 				0407D8C528EFFB360097157E /* Assets.xcassets */,
 				0407D8CA28EFFB360097157E /* Info.plist */,
 				0407D8C728EFFB360097157E /* Preview Content */,
-				049102E228FDC936004C6909 /* MemorizeModel.swift */,
 				04C29CEA28FF0893008F8915 /* data.json */,
 			);
 			path = memorize;

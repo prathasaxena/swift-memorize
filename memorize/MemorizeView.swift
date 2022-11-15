@@ -8,18 +8,31 @@
 import SwiftUI
 
 struct MemorizeView: View {
-    @ObservedObject var vm = MemorizeVM()
+    @ObservedObject var vm : MemorizeVM
     
     var body: some View {
-        VStack {
-            Text("Memorize").font(.system(size: 30)).fontWeight(.bold).multilineTextAlignment(.leading)
-            ForEach(vm.cards){item in
-                CardView(item: item).aspectRatio(2/3, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-            }
-            Spacer()
+        VStack{
+        Text("Memorize").font(.system(size: 30)).fontWeight(.bold).multilineTextAlignment(.leading)
+            CardsScreen(vm: vm)
             ThemeButtons(vm: vm)
-            
-        }.padding(4)
+        }.padding()
+    }
+}
+
+struct CardsScreen : View {
+    var vm : MemorizeVM
+    var body: some View {
+        GeometryReader { geo in
+        ScrollView {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: geo.size.width * 0.3, maximum: geo.size.width * 0.4))]) {
+                ForEach(vm.cards){item in
+                    CardView(item: item).aspectRatio(2/3, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/).onTapGesture {
+                        vm.selectCard(selectedCard: item)
+                    }
+                }
+            }
+          }
+       }
     }
 }
 
@@ -27,15 +40,15 @@ struct ThemeButtons : View {
     var vm : MemorizeVM
     var body : some View {
         HStack{
-            Button("Vehicle"){
+            Button(vm.ThemeAvailable.Vehicle.rawValue){
                 vm.selectTheme(selected: .Vehicle)
             }
             Spacer()
-            Button("Smiley"){
+            Button(vm.ThemeAvailable.Smiley.rawValue){
                 vm.selectTheme(selected: .Smiley)
             }
             Spacer()
-            Button("Animal"){
+            Button(vm.ThemeAvailable.Animals.rawValue){
                 vm.selectTheme(selected: .Animals)
             }
         }
@@ -45,9 +58,17 @@ struct ThemeButtons : View {
 struct CardView: View {
     var item : MemorizeVM.Cards
     var body : some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-            Text(item.content)
+        GeometryReader { geometry in
+            ZStack {
+                if(item.isMatched){
+                    RoundedRectangle(cornerRadius: 10).opacity(0)
+                } else {
+                RoundedRectangle(cornerRadius: 10)
+                    if (item.isFaceUp) {
+                        Text(item.content).font(.system(size: geometry.size.width * 0.8))
+                    }
+                }
+            }
         }
     }
 }
@@ -57,6 +78,7 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MemorizeView()
+        let game = MemorizeVM()
+        MemorizeView(vm: game)
     }
 }
