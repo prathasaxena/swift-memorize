@@ -23,9 +23,9 @@ struct CardsScreen : View {
     var body: some View {
         GeometryReader { geo in
         ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: geo.size.width * 0.3, maximum: geo.size.width * 0.4))]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: geo.size.width * styles.gridMinWidth, maximum: geo.size.width * styles.gridMaxWidth))]) {
                 ForEach(vm.cards){item in
-                    CardView(item: item).aspectRatio(2/3, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/).onTapGesture {
+                    CardView(item: item).aspectRatio(styles.aspectRatio, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/).onTapGesture {
                         vm.selectCard(selectedCard: item)
                     }
                 }
@@ -59,15 +59,13 @@ struct CardView: View {
     var body : some View {
         GeometryReader { geometry in
             ZStack {
-                if(item.isFaceUp){
-                    if(item.isMatched){
-                        RoundedRectangle(cornerRadius: 10).opacity(0)
-                    } else {
+               if(!item.isMatched) {
                     RoundedRectangle(cornerRadius: 10)
-                    }
-                    Text(item.content).font(.system(size: geometry.size.width * 0.8))
+                        if(item.isFaceUp) {
+                        Text(item.content).font(.system(size: geometry.size.width * 0.8))
+                      }
                 } else {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 10).opacity(0)
                 }
             }
         }
@@ -75,11 +73,16 @@ struct CardView: View {
 }
 
 
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = MemorizeVM()
         MemorizeView(vm: game)
     }
+}
+
+struct styles {
+    static let gridMinWidth : CGFloat = 0.3
+    static let gridMaxWidth : CGFloat = 0.4
+    static let aspectRatio : CGFloat = 2/3
+    static let fontSize : CGFloat = 30
 }

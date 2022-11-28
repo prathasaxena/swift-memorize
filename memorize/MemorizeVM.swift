@@ -10,9 +10,9 @@ import Foundation
 class MemorizeVM : ObservableObject {
     @Published private var model = initializeMemorize(setTheme : .Smiley, count: defaultCount)
     
-    static let animals = [ "🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐻‍❄️", "🐨", "🐯", "🦁"]
-    static let smileys = [ "😀", "😃", "😄", "🥲", "☺️", "😊", "😇", "😍", "🥰", "😘", "🤓", "🥸" ]
-    static let vehicles = ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚" ]
+    static private let animals = [ "🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐻‍❄️", "🐨", "🐯", "🦁"]
+    static private let smileys = [ "😀", "😃", "😄", "🥲", "☺️", "😊", "😇", "😍", "🥰", "😘", "🤓", "🥸" ]
+    static private let vehicles = ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚" ]
     
     var ThemeAvailable = MemorizeModel<String>.Theme.self
     typealias Cards = MemorizeModel<String>.CardType
