@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MemorizeView: View {
     @ObservedObject var vm : MemorizeVM
-    
     var body: some View {
         VStack{
         Text("Memorize").font(.system(size: 30)).fontWeight(.bold).multilineTextAlignment(.leading)
@@ -20,7 +19,7 @@ struct MemorizeView: View {
 }
 
 struct CardsScreen : View {
-    var vm : MemorizeVM
+    @ObservedObject var vm : MemorizeVM
     var body: some View {
         GeometryReader { geo in
         ScrollView {
@@ -60,13 +59,15 @@ struct CardView: View {
     var body : some View {
         GeometryReader { geometry in
             ZStack {
-                if(item.isMatched){
-                    RoundedRectangle(cornerRadius: 10).opacity(0)
-                } else {
-                RoundedRectangle(cornerRadius: 10)
-                    if (item.isFaceUp) {
-                        Text(item.content).font(.system(size: geometry.size.width * 0.8))
+                if(item.isFaceUp){
+                    if(item.isMatched){
+                        RoundedRectangle(cornerRadius: 10).opacity(0)
+                    } else {
+                    RoundedRectangle(cornerRadius: 10)
                     }
+                    Text(item.content).font(.system(size: geometry.size.width * 0.8))
+                } else {
+                    RoundedRectangle(cornerRadius: 10)
                 }
             }
         }

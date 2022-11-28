@@ -37,7 +37,7 @@ class MemorizeVM : ObservableObject {
    
     
     var cards : [Cards] {
-         model.cards
+        model.cards
     }
     
   
