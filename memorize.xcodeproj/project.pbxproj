@@ -14,6 +14,7 @@
 		049102E128FDC64B004C6909 /* MemorizeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049102E028FDC64B004C6909 /* MemorizeVM.swift */; };
 		049102E328FDC936004C6909 /* MemorizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049102E228FDC936004C6909 /* MemorizeModel.swift */; };
 		04C29CEB28FF0893008F8915 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 04C29CEA28FF0893008F8915 /* data.json */; };
+		9CC263CB2939018A003D9D83 /* CustomGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC263CA2939018A003D9D83 /* CustomGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		049102E028FDC64B004C6909 /* MemorizeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeVM.swift; sourceTree = "<group>"; };
 		049102E228FDC936004C6909 /* MemorizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeModel.swift; sourceTree = "<group>"; };
 		04C29CEA28FF0893008F8915 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		9CC263CA2939018A003D9D83 /* CustomGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				0407D8C328EFFB2F0097157E /* MemorizeView.swift */,
 				049102E028FDC64B004C6909 /* MemorizeVM.swift */,
 				049102E228FDC936004C6909 /* MemorizeModel.swift */,
+				9CC263CA2939018A003D9D83 /* CustomGrid.swift */,
 				0407D8C528EFFB360097157E /* Assets.xcassets */,
 				0407D8CA28EFFB360097157E /* Info.plist */,
 				0407D8C728EFFB360097157E /* Preview Content */,
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				049102E128FDC64B004C6909 /* MemorizeVM.swift in Sources */,
+				9CC263CB2939018A003D9D83 /* CustomGrid.swift in Sources */,
 				0407D8C428EFFB2F0097157E /* MemorizeView.swift in Sources */,
 				0407D8C228EFFB2F0097157E /* memorizeApp.swift in Sources */,
 				049102E328FDC936004C6909 /* MemorizeModel.swift in Sources */,

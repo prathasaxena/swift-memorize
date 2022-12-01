@@ -21,19 +21,11 @@ struct MemorizeView: View {
 struct CardsScreen : View {
     @ObservedObject var vm : MemorizeVM
     var body: some View {
-        GeometryReader { geo in
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: geo.size.width * styles.gridMinWidth, maximum: geo.size.width * styles.gridMaxWidth))]) {
-                ForEach(vm.cards){item in
-                    CardView(item: item).aspectRatio(styles.aspectRatio, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/).onTapGesture {
-                        vm.selectCard(selectedCard: item)
-                    }
-                }
-            }
-          }
-       }
+        CustomGrid(cards: vm.cards, selectCard: vm.selectCard, aspectRatio: styles.aspectRatio)
     }
 }
+
+
 
 struct ThemeButtons : View {
     var vm : MemorizeVM
