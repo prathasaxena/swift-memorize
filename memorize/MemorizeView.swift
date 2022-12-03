@@ -13,7 +13,7 @@ struct MemorizeView: View {
         VStack{
         Text("Memorize").font(.system(size: 30)).fontWeight(.bold).multilineTextAlignment(.leading)
             CardsScreen(vm: vm)
-            ThemeButtons(vm: vm)
+            ThemeView(vm: vm)
         }.padding()
     }
 }
@@ -27,24 +27,34 @@ struct CardsScreen : View {
 
 
 
-struct ThemeButtons : View {
+struct ThemeView : View {
     var vm : MemorizeVM
     var body : some View {
         HStack{
-            Button(vm.ThemeAvailable.Vehicle.rawValue){
-                vm.selectTheme(selected: .Vehicle)
-            }
+            ThemeButtons(themeType: vm.ThemeAvailable.Vehicle, selectCardFunc:   vm.selectTheme, imageName : "car")
             Spacer()
-            Button(vm.ThemeAvailable.Smiley.rawValue){
-                vm.selectTheme(selected: .Smiley)
-            }
+            ThemeButtons(themeType: vm.ThemeAvailable.Smiley, selectCardFunc: vm.selectTheme,
+                         imageName : "smiley")
             Spacer()
-            Button(vm.ThemeAvailable.Animals.rawValue){
-                vm.selectTheme(selected: .Animals)
-            }
+            ThemeButtons(themeType: vm.ThemeAvailable.Animals, selectCardFunc:   vm.selectTheme, imageName : "hare")
         }
     }
 }
+
+struct ThemeButtons : View {
+    let themeType : MemorizeVM.Theme
+    let selectCardFunc : (MemorizeVM.Theme) -> Void
+    let imageName : String
+    var body : some View {
+            VStack {
+                Image(systemName: imageName).foregroundColor(.blue).font(.system(size: 20))
+                Button(themeType.rawValue){
+                    selectCardFunc(themeType)
+                }
+            }
+    }
+}
+
 
 struct CardView: View {
     var item : MemorizeVM.Cards
